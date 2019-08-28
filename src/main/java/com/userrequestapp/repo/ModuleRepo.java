@@ -21,4 +21,7 @@ public interface ModuleRepo extends JpaRepository<Module, Long>{
     @Query("SELECT m.moduleId, m.moduleName FROM Module m join m.roles r join r.users u where u.userId = :userId order by r.roleId ")
     public List<Module> dashboard(@Param("userId") Long userId);
     
+    @Query("SELECT m FROM Module m")
+    public List<Module> findAllModule();
+    
 }

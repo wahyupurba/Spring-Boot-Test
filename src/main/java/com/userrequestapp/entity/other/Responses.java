@@ -14,23 +14,21 @@ import com.userrequestapp.entity.Module;
  */
 public class Responses {
     
-    private Long moduleId;
-    private String moduleName;
+    private long userId;
+    private ModuleResponses responses;
 
-    public Long getModuleId() {
-        return moduleId;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setModuleId(Long moduleId) {
-        this.moduleId = moduleId;
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+    public ModuleResponses getResponses() {
+        return responses;
     }
 
-    public String getModuleName() {
-        return moduleName;
+    public void setResponses(ModuleResponses responses) {
+        this.responses = responses;
     }
-
-    public void setModuleName(String moduleName) {
-        this.moduleName = moduleName;
-    }
-
 }

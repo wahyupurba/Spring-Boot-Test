@@ -6,24 +6,23 @@
 
 package com.userrequestapp.entity.other;
 
-import com.userrequestapp.entity.Module;
 
 /**
  *
  * @author yuu
  */
-public class Responses {
+public class ResponsesValue {
     
-    private Long moduleId;
     private String moduleName;
+    long moduleOrder;
+    
+//    List<Module> module = new ArrayList<Module>();
 
-    public Long getModuleId() {
-        return moduleId;
+    public ResponsesValue(String moduleName, long moduleOrder) {
+        this.moduleName = moduleName;
+        this.moduleOrder = moduleOrder;
     }
-
-    public void setModuleId(Long moduleId) {
-        this.moduleId = moduleId;
-    }
+    
 
     public String getModuleName() {
         return moduleName;
@@ -33,4 +32,12 @@ public class Responses {
         this.moduleName = moduleName;
     }
 
+    public long getModuleOrder() {
+        return moduleOrder;
+    }
+
+    public void setModuleOrder(long moduleOrder) {
+        this.moduleOrder = moduleOrder;
+    }
+    
 }

@@ -38,6 +38,9 @@ public class Role implements Serializable{
     @Column(length = 128, nullable = false, name = "role_name")
     String roleName;
     
+    @Column(length = 128, name = "menu_order")
+    String menuOrder;
+    
     @ManyToMany(cascade = CascadeType.ALL,mappedBy = "roles")
     private Set<User> users = new HashSet<User>();
     
@@ -65,4 +68,11 @@ public class Role implements Serializable{
         this.users = users;
     }
 
+    public String getMenuOrder() {
+        return menuOrder;
+    }
+
+    public void setMenuOrder(String menuOrder) {
+        this.menuOrder = menuOrder;
+    }
 }

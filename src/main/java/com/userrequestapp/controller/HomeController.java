@@ -7,8 +7,12 @@
 package com.userrequestapp.controller;
 
 import com.userrequestapp.entity.Module;
+import com.userrequestapp.entity.User;
+import com.userrequestapp.entity.other.ModuleResponses;
 import com.userrequestapp.entity.other.Responses;
+import com.userrequestapp.entity.other.ResponsesValue;
 import com.userrequestapp.service.ModuleService;
+import com.userrequestapp.service.RoleService;
 import com.userrequestapp.service.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +35,20 @@ public class HomeController {
     
     @Autowired
     private UserService userService;
-
     @RequestMapping(method = RequestMethod.GET,value="/{userId}")
-    public List<Object[]> home(@PathVariable(value= "userId") Long userId){
-        return userService.dashboard(userId);
+    public ResponseEntity<Responses> home(@PathVariable(value= "userId") Long userId){
+//        User user = userService.
+        List<ResponsesValue> responsesValues = userService.dashboard(userId);
+        
+        String order = "1|5|3|2|4";
+        String orderArray[] = order.split("|");
+        
+        ModuleResponses moduleResponses = new ModuleResponses();
+        moduleResponses.setModules(responsesValues);
+        Responses response = new Responses();
+        response.setUserId(userId);
+        response.setResponses(moduleResponses);
+        return ResponseEntity.ok().body(response);
     }
+    
 }

@@ -7,7 +7,8 @@
 package com.userrequestapp.service;
 
 import com.userrequestapp.entity.Module;
-import com.userrequestapp.entity.other.Responses;
+import com.userrequestapp.entity.User;
+import com.userrequestapp.entity.other.ResponsesValue;
 import com.userrequestapp.repo.UserRepo;
 import java.util.List;
 import javax.transaction.Transactional;
@@ -26,8 +27,12 @@ public class UserService {
     @Autowired
     private UserRepo repo;
     
-    public List<Object[]> dashboard(Long userId){
-        System.out.println("repo userid = "+userId);
+//    public User getUser(Long userId){
+//        User user = repo.;
+//        return user;
+//    }
+    
+    public List<ResponsesValue> dashboard(Long userId){
         return repo.dashboard(userId);
     }
     

@@ -7,7 +7,7 @@
 package com.userrequestapp.service;
 
 import com.userrequestapp.entity.Module;
-import com.userrequestapp.entity.other.Responses;
+import com.userrequestapp.entity.other.ResponsesValue;
 import com.userrequestapp.repo.ModuleRepo;
 import java.util.List;
 import javax.transaction.Transactional;
@@ -29,4 +29,5 @@ public class ModuleService {
     public List<Module> dashboard(Long userId){
         return repo.dashboard(userId);
     }
+    
 }

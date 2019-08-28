@@ -7,10 +7,14 @@
 package com.userrequestapp.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,13 +23,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
+import jdk.nashorn.internal.runtime.arrays.ArrayLikeIterator;
 
 /**
  *
  * @author yuu
  */
-
+//@SqlResultSetMapping(name="moduleResultMapping",classes = {@ConstructorResult(targetClass = com.userrequestapp.entity.Module.class,columns = {@ColumnResult(name = "moduleId"),@ColumnResult(name = "moduleName")})})
 @Entity
 @Table(name = "tbl_module")
 public class Module implements Serializable{
@@ -46,7 +52,15 @@ public class Module implements Serializable{
     joinColumns = @JoinColumn(name = "module_id"), 
     inverseJoinColumns = @JoinColumn(name = "role_id"))
     Set<Role> roles = new HashSet<Role>();
+    
+    public Module() {
+    }
 
+    public Module(String moduleName,long moduleId) {
+        this.moduleId = moduleId;
+        this.moduleName = moduleName;
+    }
+    
     public long getModuleId() {
         return moduleId;
     }
